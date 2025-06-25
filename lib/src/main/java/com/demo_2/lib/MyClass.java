@@ -40,7 +40,7 @@ public class MyClass {
         // 4] long (-9 quintillion to 9 quintillion) (8 bytes) (64-bit signed two's complement integer)
         long l = 999999999999999999L;
         // 5] float (approx. 7 decimal digits precision) (4 bytes) (32-bit IEEE 754 floating point)
-        float f = 972.5f;
+        float f = 972.5f; // Suffix 'f' or 'F' is used to indicate float data type in Java (default is double)
         // 6] double (approx. 15 decimal digits precision) (8 bytes) (64-bit IEEE 754 floating point)
         double d = 864.5;
         // 7] char (Single Unicode character) (2 bytes)
@@ -60,16 +60,18 @@ public class MyClass {
         // b. Non-Primitive Data Types
 
         // 1] String (String is not a primitive data type; it is a class)
-        String s = "GeeksforGeeks";
-        String s1 = new String("GeeksforGeeks");
+        String s = "GeeksforGeeks";  // String constant pool memory (String pool)
+        System.out.println("String: " + s);
+        String s1 = new String("GeeksforGeeks"); // Heap memory or non-pool
+        System.out.println("String: " + s1);
 
         // 2] Array (Array is a collection of similar data types)
         int[] arr = {1, 2, 3, 4, 5};
 
         // Printing array elements
         System.out.print("Array elements: ");
-        for (int num : arr) {
-            System.out.print(num + " ");
+        for (int i=0; i <arr.length; i++) {
+            System.out.print(arr[i] + " ");
         }
         System.out.println(); // New line
 
@@ -96,7 +98,21 @@ public class MyClass {
         // 5] Null (Used to indicate a reference variable does not point to any object)
         String myString = null;
         System.out.println("Null reference string: " + myString);
+
+        // Lesson 2: Java Operators
+        // Type Casting method
+        Type_Casting.typeCasting();
+
+        // Operators in Java
+        Java_operators.operators();
+
+        int sum = 0;
+        for (int i = 0; i<10; i++){
+            sum += i;
+        }
+        System.out.println("Sum of first 10 natural numbers: " + sum);
     }
+
 }
 
 // 3] Proper Class Implementation
@@ -160,5 +176,58 @@ class Cat implements Animal {
 
     public void eat() {
         System.out.println("Cat eats fish.");
+    }
+}
+
+// 5] Type Casting: is the conversion of one data type into another data type
+class Type_Casting {
+    public static void typeCasting() {
+        // Implicit Type Casting (Widening Casting): it is done automatically
+        int num = 10;
+        double temp = num; // Automatically converts int to float
+        System.out.println("Implicit Type Casting (Widening): " + temp);
+
+        // Explicit Type Casting (Narrowing Casting): it is done manually
+        double pi = 3.14;
+        int number = (int)pi; // Explicitly converts float to int
+        System.out.println("Explicit Type Casting (Narrowing): " + number);
+        // Note: Narrowing Casting may lead to loss of data
+
+        // Tpe Casting between different Data Types:
+        int myInt = 5;
+        char myChar = (char) (myInt + 'A');
+        System.out.println("Character: " + myChar);
+    }
+
+}
+
+// 6] Operators in Java
+class Java_operators{
+    public static void operators(){
+        // ARITHMETIC OPERATORS +, -, *, /, %, ++, --
+        System.out.println(1*2);
+        System.out.println(100/2);
+        System.out.println(100%5);
+
+        // COMPARISON OPERATORS ==, !=, >, <, >=, <=
+        int x = 20;
+        int y = 20;
+        System.out.println(x == y);
+        System.out.println(x > y);
+
+        // LOGICAL OPERATORS && (AND), || (OR), ! (NOT)
+        boolean isRaining = true;
+        boolean needUmbrella = false;
+
+        if (isRaining && !needUmbrella) {
+            System.out.println("Stay at Home !");
+        }
+        if (isRaining || needUmbrella) {
+            System.out.println("Go Outside but Take the Umbrella !");
+
+        }
+        if (!isRaining || needUmbrella) {
+            System.out.println("Go Outside !");
+        }
     }
 }
